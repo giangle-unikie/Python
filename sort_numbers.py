@@ -5,11 +5,12 @@ import sys
 #if value in the list of numbers is not interger or float, program will exit
 def sort_numbers(numbers):
     for i, value in enumerate(numbers):
-        value_is_number = value.replace('.', '', 1).isdigit()
-        if not value_is_number and not (value.startswith("-") and value[1:].isdigit()):
-            print("Error:", value, "is not integer or float.")
+        try:
+            numbers[i] = float(value)
+        except ValueError:
+            print("Error:", value, "is not a valid number.")
             sys.exit(1)
-        numbers[i] = float(value)
+    numbers = [num for num in numbers if num >= 0] + [num for num in numbers if num < 0]
     numbers.sort()
     return numbers
 
