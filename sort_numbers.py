@@ -10,7 +10,6 @@ def sort_numbers(numbers):
         except ValueError:
             print("Error:", value, "is not a valid number.")
             sys.exit(1)
-    numbers = [num for num in numbers if num >= 0] + [num for num in numbers if num < 0]
     numbers.sort()
     return numbers
 
