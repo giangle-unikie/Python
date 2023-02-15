@@ -6,7 +6,10 @@ import sys
 def sort_numbers(numbers):
     for i, value in enumerate(numbers):
         try:
-            numbers[i] = float(value)
+            if float(value).is_integer():
+                numbers[i] = int(value)
+            else:
+                numbers[i] = float(value)
         except ValueError:
             print("Error:", value, "is not a valid number.")
             sys.exit(1)
