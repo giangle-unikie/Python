@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Install dependencies
-pip install -r requirements.txt
-
 # Run tests and export results to report file
 pytest --junitxml=test-report.xml
 
@@ -10,7 +7,7 @@ pytest --junitxml=test-report.xml
 pytest_status=$?
 if [ $pytest_status -eq 0 ]
 then
-  echo "All tests passed!"
+  echo "All tests passed! See test-report.xml for details."
   exit 0
 else
   echo "Tests failed! See test-report.xml for details."
