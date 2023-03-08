@@ -9,3 +9,6 @@ sudo apt install python3-pip
 
 # Install Pytest
 pip3 install pytest
+
+#install Pytest coverage
+pip install pytest-cov
