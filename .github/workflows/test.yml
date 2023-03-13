@@ -1,12 +1,15 @@
+---
 name: Pytest
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
-  issue_comment:  
-    types: [created]
-    if: contains(github.event.comment.body, 'run action') 
-
-  
+    types:
+      - opened
+      - reopened
+      - synchronize
+  issue_comment:
+    types:
+      - created
+    if: contains(github.event.comment.body, 'run action')
 jobs:
   pytest:
     runs-on: ubuntu-latest
@@ -14,19 +17,18 @@ jobs:
       run:
         working-directory: ./
     if: contains(github.event.comment.body, 'run_action')
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.11
-    - name: set up environment
-      run: ./enviroment_setup.sh
-    - name: Run Pytest
-      run: ./build_and_test.sh
-    - name: Clean up
-      run: |
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+      - name: set up environment
+        run: ./enviroment_setup.sh
+      - name: Run Pytest
+        run: ./build_and_test.sh
+      - name: Clean up
+        run: |
           rm -rf .pytest_cache/
           rm -rf .coverage
