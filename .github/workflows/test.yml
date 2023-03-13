@@ -1,33 +1,26 @@
 ---
 name: Pytest
-on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-  issue_comment:
-    types:
-      - created
-    if: contains(github.event.comment.body, 'run action')
+on: [pull_request]
 jobs:
   pytest:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./
-    if: contains(github.event.comment.body, 'run_action')
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v2
         with:
           python-version: 3.11
       - name: set up environment
-        run: ./enviroment_setup.sh
+        run: ./Python/enviroment_setup.sh
+        shell: bash
       - name: Run Pytest
-        run: ./build_and_test.sh
+        run: ./Python/build_and_test.sh
+        shell: bash
       - name: Clean up
         run: |
           rm -rf .pytest_cache/
