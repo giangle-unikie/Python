@@ -13,10 +13,10 @@ jobs:
         with:
           python-version: 3.11
       - name: set up environment
-        run: ./Python/enviroment_setup.sh
+        run: ./enviroment_setup.sh
         shell: bash
       - name: Run Pytest
-        run: ./Python/build_and_test.sh
+        run: ./build_and_test.sh
         shell: bash
       - name: Clean up
         run: |
