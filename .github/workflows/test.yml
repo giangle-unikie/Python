@@ -1,7 +1,6 @@
 name: Pytest
 on:
   pull_request:
-    branches: [GitHub_Action]
     types: [opened, reopened, synchronize]
   issue_comment:  
     types: [created]
