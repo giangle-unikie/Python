@@ -1,0 +1,22 @@
+name: Pytest
+on:
+  pull_request:
+    branches: [GitHub_Action]
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.11
+    - name: set up environment
+      run: ./enviroment_setup.sh
+    - name: Run Pytest
+      run: ./build_and_test.sh
+    - name: Clean up
+      run: |
+          rm -rf .pytest_cache/
+          rm -rf .coverage
