@@ -8,7 +8,11 @@ on:
 jobs:
   pytest:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ../../
     if: contains(github.event.comment.body, '/run_action')
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
